@@ -1,2 +1,46 @@
-# doggo
-A open source programing language with  syntax similar to NASM asembly!
+#  Hazel — The Doggo Programming Language
+
+Hazel is a assembly-style written in Python.  
+She’s small, simple, and surprisingly clever — capable of math, branching, labels, and sleeping.
+
+---
+
+##  Features
+- Basic arithmetic: `add`, `sub`, `mul`, `div`, `mod`
+- Variables + input (`set`, `finp`, `sinp`)
+- Comparison (`cmp`, `jg`, `jl`, `ljg`, `ljl`)
+- Labels + control flow (`label`, `ljmp`)
+- `sleep`, `exit`, `no` operations
+- Built-in constant: `inf = ∞`
+
+---
+
+## ⚙️ Installation
+
+### Option 1 — Run with Python
+```bash
+git clone https://github.com/YOURUSERNAME/doggo.git
+cd doggo
+python doggo.py example/hello.dog
+
+```
+### Option 2 - Run executaible
+```bash
+git clone https://github.com/YOURUSERNAME/doggo.git
+cd doggo
+python build.py
+cp dist/doggo doggo
+sudo rm -rf dist build doggo.spec
+./doggo example/hello.dog
+```
+
+## Adding to PATH (Recomended)
+### (Non-permament method)
+```bash
+export PATH="$PATH:/home/john/Desktop/hazel"
+```
+### (permament method)
+```bash
+echo 'export PATH="$PATH:/home/john/Desktop/hazel"' >> ~/.bashrc
+source ~/.bashrc
+```
