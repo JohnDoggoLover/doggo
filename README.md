@@ -1,6 +1,6 @@
 #  doggo — The Doggo Programming Language
 
-Hazel is a assembly-style written in Python.  
+Doggo is a assembly-style language written in Python.  
 She’s small, simple, and surprisingly clever — capable of math, branching, labels, and sleeping.
 
 ---
