@@ -6,6 +6,7 @@ vars = {"inf": math.inf }
 
 def compute(words, vars):
     labels = {}
+    retpos = 0
     i = 0
     gt = False
     lt = False
@@ -179,6 +180,33 @@ def compute(words, vars):
                         continue
                 except:
                     print(f"Invalid jump target: {parts[1]}")
+        elif cmd == "set.ret":
+            retpos = vars[parts[1]]
+        elif cmd == "get.ret":
+            vars[parts[1]] = retpos
+        elif cmd == "ret":
+            try:
+                target = retpos
+                if 0 <= target <= len(words):
+                    if target == len(words):
+                        break            
+                    i = target
+                    continue
+            except:
+                print(f"Invalid jump target: {retpos}")
+            
+        elif cmd == "call":
+            try:
+                target = int(labels[parts[1]])
+                if 0 <= target <= len(words):
+                    retpos = i + 1
+                    if target == len(words):
+                        break
+                    i = target
+                    continue
+            except:
+                print(f"Invalid jump target: {parts[1]}")
+
 
         # ----- jump if less -----
         elif cmd == "jl":
