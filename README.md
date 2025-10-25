@@ -28,10 +28,7 @@ python doggo.py example/hello.dog
 ```bash
 git clone https://github.com/JohnDoggoLover/doggo.git
 cd doggo
-python build.py
-cp dist/doggo doggo
-sudo rm -rf dist build doggo.spec
-./doggo example/hello.dog
+./doggo.py example/hello.dog
 ```
 
 ## Adding to PATH (Recomended)
