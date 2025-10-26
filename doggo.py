@@ -12,7 +12,7 @@ def compute(words, vars):
     lt = False
     while i < len(words):
         tok = words[i].strip()
-        parts = tok.split("-")
+        parts = tok.split("~")
         cmd = parts[0]
         if cmd == "label":
             labels[parts[1]] = i
@@ -20,7 +20,7 @@ def compute(words, vars):
     i = 0
     while i < len(words):
         tok = words[i].strip()
-        parts = tok.split("-")
+        parts = tok.split("~")
         cmd = parts[0]
 
         # ----- out -----
@@ -196,17 +196,28 @@ def compute(words, vars):
                 print(f"Invalid jump target: {retpos}")
             
         elif cmd == "call":
-            try:
-                target = int(labels[parts[1]])
-                if 0 <= target <= len(words):
-                    retpos = i + 1
-                    if target == len(words):
-                        break
-                    i = target
-                    continue
-            except:
+            target = labels.get(parts[1])
+            if target is None:
                 print(f"Invalid jump target: {parts[1]}")
+            else:
+                retpos = i + 1
+                i = target
+                continue
 
+
+        elif cmd == "scmp":
+            if parts[1][0] == '"':
+                parts[1] = parts[1][1:]
+            else:
+                parts[1] = str(vars[parts[1]])
+            if parts[2][0] == '"':
+                parts[2] = parts[2][1:]
+            else:
+                parts[2] = str(vars[parts[2]])
+            if parts[1] == parts[2]:
+                gt, lt = False, False
+            else:
+                gt, lt = True, True
 
         # ----- jump if less -----
         elif cmd == "jl":
