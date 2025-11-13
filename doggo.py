@@ -294,7 +294,7 @@ def compute(words, vars):
         elif cmd == "no":
             pass
 
-        # ✅ increment at the *end of loop*
+        # increment at the *end of loop*
         else:
             print("INCORRECT COMMAND " + str(words[i]))
             break
